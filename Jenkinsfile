@@ -38,11 +38,11 @@ pipeline {
     }
     post{
         success{
-            slackSend channel: 'munyaokelvin_ip1', color: 'good', iconEmoji: '👍🏾', message: 'Status of ${JOB_NAME} has ran successfully. ${BUILD_NUMBER} ${BUILD_URL}'
+            slackSend channel: 'munyaokelvin_ip1', color: 'good', iconEmoji: '👍🏾', message: 'Status of ${env.JOB_NAME} has ran successfully. ${env.BUILD_NUMBER} ${env.BUILD_URL}'
         }
         failure{
             slackSend channel: 'munyaokelvin_ip1', color: 'danger', iconEmoji: '😖', message: 'Status of ${env.JOB_NAME} has failed. ${env.BUILD_NUMBER} ${env.BUILD_URL}'
-            emailext body: 'Status of ${env.JOB_NAME} has failed to build. #${env.BUILD_NUMBER} ${env.BUILD_URL}', subject: 'Failure of Pipeline', to: 'samuel.kadima@moringaschool.com, marshdeveloper99@gmail.com'
+            emailext body: 'Status of ${env.JOB_NAME} has failed to build. ${env.BUILD_NUMBER} ${env.BUILD_URL}', subject: 'Failure of Pipeline', to: 'samuel.kadima@moringaschool.com, marshdeveloper99@gmail.com'
         }
     }
 }
